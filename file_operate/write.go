@@ -35,10 +35,26 @@ func main() {
 	fmt.Printf("写入 %d 个字节到文件中\n", n1)
 	file.Close()
 	//ioutil
-	err = ioutil.WriteFile("./www1.txt", []byte("hello china!"), 0644)
+	err = ioutil.WriteFile("./www1.txt", []byte("hello china!\n"), 0644)
 	if err != nil {
 		fmt.Println("ioutil write err:", err)
 		return
+	}
+	//ioutil.ReadAll、ioutil.ReadFile 和 ioutil.ReadDir等函数在1.16版本后就被弃用，可使用使用os或io包中相同的方法代替
+	/*
+		ioutil.ReadAll -> io.ReadAll
+		ioutil.ReadFile -> os.ReadFile
+		ioutil.ReadDir -> os.ReadDir
+		// others
+		ioutil.NopCloser -> io.NopCloser
+		ioutil.ReadDir -> os.ReadDir
+		ioutil.TempDir -> os.MkdirTemp
+		ioutil.TempFile -> os.CreateTemp
+		ioutil.WriteFile -> os.WriteFile
+	*/
+	err = os.WriteFile("./www1.txt", []byte("hello neimenggu!\n"), 0644)
+	if err != nil {
+		fmt.Println("os write err:", err)
 	}
 
 	content, err := ioutil.ReadFile("./www.txt")
