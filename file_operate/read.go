@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("./xxx.txt") //windows系统下open只能打开已存在的文件，linux是可以创建文件的
+	file, err := os.Open("./xxx.txt") //open函数只能打开已存在的文件，linux是可以创建文件的
 	if err != nil {
 		fmt.Println("open err:", err)
 		return

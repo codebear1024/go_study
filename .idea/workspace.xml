@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="33c8033d-23c8-40e8-b526-9dde6d73e610" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/file_operate/read.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/file_operate/write.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/file_operate/xxx.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/file_operate/xxx1.txt" afterDir="false" />
+    <list default="true" id="33c8033d-23c8-40e8-b526-9dde6d73e610" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_operate/read.go" beforeDir="false" afterPath="$PROJECT_DIR$/file_operate/read.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_operate/write.go" beforeDir="false" afterPath="$PROJECT_DIR$/file_operate/write.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello world/hello_world.go" beforeDir="false" afterPath="$PROJECT_DIR$/01hello world/hello_world.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/print_terminal/print_terminal.go" beforeDir="false" afterPath="$PROJECT_DIR$/02print_terminal/print_terminal.go" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,35 +37,50 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="D:\Program Files\Go" />
+  <component name="GOROOT" url="file://D:/Program Files/Go" />
   <component name="Git.Settings">
+    <option name="INCOMING_CHECK_STRATEGY" value="从不" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
     <option name="urls">
       <list>
         <option value="file://$PROJECT_DIR$/../.." />
       </list>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://D:/Program Files/Go/src/io/fs/fs.go" root0="SKIP_INSPECTION" />
+    <setting file="file://D:/Program Files/Go/src/os/file.go" root0="SKIP_INSPECTION" />
+    <setting file="file://D:/Program Files/Go/src/os/types.go" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectId" id="2QMfLcOBeMpaKlZkq3lrcZmxcR8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="TODO_SCOPE" value="All Places" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
-    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
-    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
-    <property name="deletionFromPopupRequiresConfirmation" value="false" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/file_operate" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "E:/code/GOWORK/src/go_study",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Code\GOWORK\src\study\file_operate" />
@@ -77,27 +93,33 @@
       <recent name="E:\Code\GOWORK\src\study\tcp\client" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Go Build.go build client.go">
+  <component name="RunManager" selected="Go 构建.go build client.go">
     <configuration name="go build client.go" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="study" />
       <working_directory value="$PROJECT_DIR$/" />
       <go_parameters value="-i" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/udp/client.go" />
       <package value="study" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/udp/client.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build go_study/file_operate" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="study" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="go_study/file_operate" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/file_operate/read.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build go_study/print_terminal" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="study" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="go_study/print_terminal" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/print_terminal/print_terminal.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build server.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -115,18 +137,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.go build client.go" />
-      <item itemvalue="Go Build.go build server.go" />
+      <item itemvalue="Go 构建.go build client.go" />
+      <item itemvalue="Go 构建.go build go_study/file_operate" />
+      <item itemvalue="Go 构建.go build go_study/print_terminal" />
+      <item itemvalue="Go 构建.go build server.go" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go Build.go build server.go" />
-        <item itemvalue="Go Build.go build server.go" />
-      </list>
-    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -143,15 +162,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VgoProject">
-    <integration-enabled>true</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>
