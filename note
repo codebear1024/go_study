@@ -79,4 +79,7 @@
         Saturday
     )
     上面表明，Sunday的值为0，Monday的值为1，以此类推。
-15.
+15.反射：可以直接获取接口值的动态类型和动态值，任何接口值都可以理解成由reflect.Type和reflect.Value两部分组成。
+    应用：各种web框架，配置文件解析库、ORM框架
+    reflect.Typeof()可以获取任意值的类型对象（reflect.Type）
+        反射中关于类型分为两种：类型（Type）和种类（Kind）
