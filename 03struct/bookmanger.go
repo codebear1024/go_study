@@ -64,7 +64,8 @@ func modifyBook(bookname, author string, price float64, status bool) {
 
 func showbook() {
 	for i := 0; i < len(bookslice); i++ {
-		fmt.Printf("name:%s, author:%s, price:%v, status:%v\n", bookslice[i].name, bookslice[i].author, bookslice[i].price, bookslice[i].status)
+		fmt.Printf("name:%s, author:%s, price:%v, status:%v\n",
+			bookslice[i].name, bookslice[i].author, bookslice[i].price, bookslice[i].status)
 	}
 }
 
