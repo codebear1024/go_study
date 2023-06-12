@@ -130,7 +130,7 @@
                 // v.Float()从反射中获取浮点型的原始值，然后通过float32()强制类型转换
                 fmt.Printf("type is float32, value is %f\n", float32(v.Float()))
             }
-        }
+        } bvvv
         ```
     通过反射修改变量的值：
         修改变量的值时，必须传递变量地址进行修改，然后使用专有的Elem()方法来获取指针对应的值。
@@ -146,3 +146,9 @@
     IsNil()报告v持有的值是否为nil。v持有的值的分类必须是通道、函数、接口、映射、指针、切片之一；否则IsNil函数会导致panic。
     IsValid()返回v是否持有一个值。如果v是Value零值会返回假，此时v除了IsValid、String、Kind之外的方法都会导致panic。
     结构体反射：任意值通过reflect.TypeOf()获得反射对象信息后，如果它的类型是结构体，可以通过反射值对象（reflect.Type）的NumField()和Field()方法获得结构体成员的详细信息。
+    **注意：使用反射对修改变量时，必须取地址和使用Elem()，如下：**
+        ```
+        a := 3
+        v := reflect.ValueOf(&a).Elem()
+        v.SetInt(4)
+        ```
