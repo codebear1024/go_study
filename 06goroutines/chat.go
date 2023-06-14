@@ -57,29 +57,42 @@ func broadcaster() {
 }
 
 func handleConn(conn net.Conn) {
-	defer conn.Close()
 	cli := client{make(chan string), time.Now()}
-	go clientWrite(conn, cli.ch)
+	go clientWrite(conn, cli)
 	who := conn.RemoteAddr().String()
 	cli.ch <- "You are " + who
 	messages <- who + " has arrived!"
 	entering <- cli
 	input := bufio.NewScanner(conn)
-	for input.Scan() {
+	for {
+		ok := input.Scan()
+		if !ok {
+			return
+		}
 		messages <- who + "：" + input.Text()
 		cli.lastRecord = time.Now()
-		/*if current.Sub(cli.lastRecord) > 20*time.Second {
-			// 跳出循环主动关闭和该客户端的连接
-			break
-		}*/
-
 	}
 	leaving <- cli
 	messages <- who + " has left!"
 }
 
-func clientWrite(conn net.Conn, ch chan string) {
-	for msg := range ch {
+func clientWrite(conn net.Conn, cli client) {
+	/*for msg := range ch {
 		fmt.Fprintln(conn, msg)
+	}*/
+	for {
+		select {
+		case msg := <-cli.ch:
+			fmt.Fprintln(conn, msg)
+		default:
+			if time.Now().Sub(cli.lastRecord) > 20*time.Second {
+				leaving <- cli
+				who := conn.RemoteAddr().String()
+				messages <- who + " has be closed!"
+				conn.Close()
+				fmt.Printf("%s has been closed=============\n", who)
+				return
+			}
+		}
 	}
 }
