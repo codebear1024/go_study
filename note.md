@@ -174,4 +174,14 @@
     要控制的操作
     <-tokens // release the token
     ```
-18.
+18.sync.Mutex，互斥锁不可以嵌套，也就是说没法对一个已经锁上的mutex来再次上锁--这会导致程序死锁，没法继续执行下去，Withdraw会永远阻塞下去。go语言没有重入锁（嵌套锁）。
+    ```
+    并发的问题都可以用一致的、简单的既定的模式来规避。所以可能的话，将变量限定在goroutine内部；如果是多个goroutine都需要访问的变量，使用互斥条件来访问。
+    ```
+19.sync.Once，保证在全局范围内只调用指定的函数一次，执行过程是原子的。
+20.Go竞争检测器(race detector)：能够记录所有运行期对共享变量访问工具，会记录下每一个读或者写共享变量的goroutine的身份信息。需要在go build，go run或者go test命令后面加上-race的flag。
+21.goroutines和线程的区别
+    （1）栈内存大小不同，线程的栈内存为固定的2MB大小，goroutines为2KB到1GB，可按照需求动态伸缩。
+    （2）goroutines的调度不需要进入内核上下文，由程序自身独立进行调度。所以调度goroutines要比调度线程代价低得多。
+    （3）GOMAXPROCS变量决定了会有多少个操作系统的线程同时执行Go代码，
+    （4）goroutines没有ID
