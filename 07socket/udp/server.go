@@ -9,7 +9,7 @@ import (
 
 func main() {
 	listener, err := net.ListenUDP("udp", &net.UDPAddr{
-		IP: net.ParseIP("127.0.0.1"),
+		IP:   net.ParseIP("127.0.0.1"),
 		Port: 1314,
 	})
 	if err != nil {
