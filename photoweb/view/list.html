@@ -10,7 +10,7 @@
     </div>
     <ol>
       {{range .}}
-        <div><li><a href="/view?id={{.|urlquery}}">{{.|html}}</a></li></div>
+        <li><a href="/view?id={{.|urlquery}}">{{.|html}}</a></li>
       {{end}}
     </ol>
     <div><a href="/upload" >上传</a></div>
