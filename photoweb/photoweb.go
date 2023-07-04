@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"study/photoweb/sessionmanger"
 )
 
 const (
@@ -22,6 +23,7 @@ type user struct {
 
 var templates = make(map[string]*template.Template)
 var userMap = make(map[string]user)
+var globalSessionManger *sessionmanger.SessionManger
 
 func init() {
 	fileInfoArr, err := os.ReadDir(ViewDir)
@@ -39,6 +41,8 @@ func init() {
 		t := template.Must(template.ParseFiles(templatePath))
 		templates[templateName] = t
 	}
+	globalSessionManger = sessionmanger.NewSessionManger("sessionid", 3600)
+	go globalSessionManger.SessionGC()
 }
 
 func renderHtml(w http.ResponseWriter, tmpl string, data interface{}) (err error) {
@@ -52,6 +56,12 @@ func renderHtml(w http.ResponseWriter, tmpl string, data interface{}) (err error
 }
 
 func listHandler(w http.ResponseWriter, r *http.Request) {
+	session := globalSessionManger.SessionGet(w, r)
+	if session == nil {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
+	globalSessionManger.SessionUpdate(session.SessionId())
 	fileInfoArr, err := os.ReadDir(UploadDir)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -67,6 +77,12 @@ func listHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func uploadHandler(w http.ResponseWriter, r *http.Request) {
+	session := globalSessionManger.SessionGet(w, r)
+	if session == nil {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
+	globalSessionManger.SessionUpdate(session.SessionId())
 	if r.Method == "GET" {
 		if err := renderHtml(w, "upload.html", nil); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -95,6 +111,12 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
+	session := globalSessionManger.SessionGet(w, r)
+	if session == nil {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
+	globalSessionManger.SessionUpdate(session.SessionId())
 	imageId := r.FormValue("id")
 	imagePath := UploadDir + "/" + imageId
 	w.Header().Set("Content-Type", "image")
@@ -113,6 +135,10 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		if len(userName) == 0 || password != userMap[userName].password {
 			_ = renderHtml(w, "login.html", "登陆失败，请检查账号和密码")
 			return
+		}
+		session := globalSessionManger.SessionStart(w, r)
+		if session != nil {
+			globalSessionManger.SessionUpdate(session.SessionId())
 		}
 		http.Redirect(w, r, "/", http.StatusFound)
 	}
