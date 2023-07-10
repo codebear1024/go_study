@@ -179,7 +179,7 @@ func transationDemo() {
 		fmt.Println("updata id6 err", err)
 		return
 	}
-	err := tx.Commit()
+	err = tx.Commit()
 	if err != nil {
 		tx.Rollback()
 		fmt.Println("Commit err:", err)

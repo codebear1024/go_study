@@ -1,0 +1,32 @@
+{{define "list.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看所有书籍信息</title>
+</head>
+<body>
+    <table border=1>
+        <thead>
+            <th>序号</th>
+            <th>书名</th>
+            <th>价格</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+            {{range .}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.Title}}</td>
+                    <td>{{.Price}}</td>
+                    <td><a href="/book/delete?id={{.Id}}">删除</a></td>
+                </tr>
+            {{end}}
+        </tbody>
+    </table>
+    <div>
+        <a href="/book/new">添加书籍</a>
+    </div>
+</body>
+</html>
+{{end}}
