@@ -27,9 +27,10 @@ func initDB(dsn string) (err error) {
 	return
 }
 
-func insertBook(title string, price int) (err error) {
+func insertBook(title string, price int) (id int64, err error) {
 	sqlstr := "insert into book(title,price) values(?,?)"
-	_, err = db.Exec(sqlstr, title, price)
+	ret, err := db.Exec(sqlstr, title, price)
+	id, err = ret.LastInsertId()
 	return
 }
 
