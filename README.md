@@ -1,6 +1,20 @@
 ### 记录一些需要重点注意的概念
 * 切片：拥有相同类型元素的可变长度的序列,基于数组类型做了一层封装。 使用make或直接[]T的方式进行定义
 * 指针是带类型的，不同类型的指针不能进行赋值。
+* 常量生成器iota从0开始，逐项加1，用法如下：
+    ```
+    type Weekday int
+    const (
+        Sunday weekday = iota
+        Monday
+        Tuesday
+        Wednesday
+        Thursday
+        Friday
+        Saturday
+    )
+    Sunday的值为0，Monday的值为1，以此类推。
+    ```
 ### new和make的区别
 * new是用来初始化值类型指针的
     ```
