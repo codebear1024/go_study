@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
+
+	"github.com/emicklei/go-restful/v3"
 )
 
 // This example has the same service definition as restful-user-resource
@@ -23,26 +25,30 @@ type User struct {
 	Id, Name string
 }
 
+// 定义UserResource
 type UserResource struct {
 	// normally one would use DAO (data access object)
 	users map[string]User
 }
 
+// 定义一个 User resource Register（资源注册器）
 func (u UserResource) Register(container *restful.Container) {
+	// 构造了 WebService 实例
 	ws := new(restful.WebService)
-	ws.
-		Path("/users").
+	// 定义URL RootPath /users
+	ws.Path("/users").
 		Consumes(restful.MIME_XML, restful.MIME_JSON).
 		Produces(restful.MIME_JSON, restful.MIME_XML) // you can specify this per route as well
-
+	// 添加	Routes
 	ws.Route(ws.GET("/{user-id}").To(u.findUser))
 	ws.Route(ws.POST("").To(u.updateUser))
 	ws.Route(ws.PUT("/{user-id}").To(u.createUser))
 	ws.Route(ws.DELETE("/{user-id}").To(u.removeUser))
-
+	// 将WebServices关联到Container
 	container.Add(ws)
 }
 
+// 定义 User 的 Handlers。
 // GET http://localhost:8080/users/1
 func (u UserResource) findUser(request *restful.Request, response *restful.Response) {
 	id := request.PathParameter("user-id")
