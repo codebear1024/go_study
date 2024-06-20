@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+
 	"study/photoweb/sessionmanger"
 )
 
@@ -90,6 +91,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	} else if r.Method == "POST" {
 		f, h, err := r.FormFile("image")
+
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
